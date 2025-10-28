@@ -8,7 +8,7 @@ COMMANDS_LEVEL_1 = [
     "rm -f /tmp/file.tmp",
     "touch \"/tmp/new note.txt\"",
     "cp file.txt /backup/file.txt",
-    "mv image.png ~/Pictures/",
-    "chmod 600 ~/.ssh/id_rsa",
+    "mv image.png Pictures/",
+    "chmod 600 .ssh/id_rsa",
     "ssh user@192.168.0.50 -p 2222"
 ]
