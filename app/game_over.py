@@ -13,4 +13,8 @@ def show_game_over(screen):
     msg = "Presiona cualquier tecla para salir..."
     screen.print_at(msg, screen.width // 2 - len(msg) // 2, y + 2, colour=7)
     screen.refresh()
-    screen.get_key()
+    # Esperar hasta que el usuario presione una tecla válida
+    while True:
+        key = screen.get_key()
+        if key is not None:
+            break
