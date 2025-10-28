@@ -1,11 +1,13 @@
 # game.py - Lógica del juego principal
 
 import time
+import random
 from game_over import show_game_over
+from commands import COMMANDS_LEVEL_1
 
 def start_game(screen):
     screen.clear()
-    word = "GHOST"
+    word = random.choice(COMMANDS_LEVEL_1)  # Seleccionar comando aleatorio
     typed_letters = ""  # Letras que el usuario ya tipeó correctamente
     x = screen.width // 2 - len(word) // 2
     y = 0.0  # Usar float para posición más precisa
@@ -15,7 +17,7 @@ def start_game(screen):
     screen.print_at("Escribe: ", 2, input_y, colour=7, bg=0)
 
     last_time = time.time()
-    fall_speed = 0.8  # Velocidad de caída (caracteres por segundo)
+    fall_speed = 2  # Velocidad de caída (caracteres por segundo)
 
     while y < screen.height:
         current_time = time.time()
@@ -31,16 +33,19 @@ def start_game(screen):
         while select.select([sys.stdin], [], [], 0)[0]:
             try:
                 key = screen.get_key()
-                if key and chr(key).isalpha():
-                    char = chr(key).upper()
-                    # Verificar si la siguiente letra esperada coincide
+                if key:
+                    char = chr(key)
                     expected_index = len(typed_letters)
-                    if expected_index < len(word) and char == word[expected_index]:
-                        typed_letters += char
-                        # Si completó la palabra, resetear para la siguiente
-                        if len(typed_letters) == len(word):
-                            typed_letters = ""
-                            y = 0.0  # Resetear posición de la palabra
+                    if expected_index < len(word):
+                        # Permitir cualquier caracter, no solo letras
+                        if char == word[expected_index]:
+                            typed_letters += char
+                            # Si completó la palabra, resetear para la siguiente
+                            if len(typed_letters) == len(word):
+                                word = random.choice(COMMANDS_LEVEL_1)
+                                typed_letters = ""
+                                x = screen.width // 2 - len(word) // 2
+                                y = 0.0  # Resetear posición de la palabra
             except:
                 break
 
