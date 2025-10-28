@@ -9,7 +9,7 @@ def render_game(game_state):
     score_text = f"Score: {game_state.score}"
     # Usar FigletText para un efecto ascii si hay espacio suficiente
     if screen.width > 40:
-        figlet = FigletText(str(game_state.score), font="small")
+        figlet = FigletText(str(game_state.score), font="mini")
         rendered = figlet.rendered_text
         # Si es string, usar splitlines; si es tuple/list, iterar y filtrar None
         lines = []
