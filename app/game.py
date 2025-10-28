@@ -5,7 +5,6 @@ from game_over import show_game_over
 from core.game_state import GameState
 from utils.input_handler import handle_input
 from ui.renderer import render_game
-from utils.audio import play_tone
 
 def start_game(screen):
     game_state = GameState(screen)
@@ -26,11 +25,5 @@ def start_game(screen):
         render_game(game_state)
         time.sleep(0.01)
 
-    # Triada triste descendente al perder
-    play_tone(523, 0.18, 0.2)  # C5
-    time.sleep(0.1) 
-    play_tone(415, 0.18, 0.2)  # G#4
-    time.sleep(0.1) 
-    play_tone(349, 0.25, 0.2)  # F4
-    time.sleep(0.1)  # Pausa breve para asegurar que el último tono termine
+    # Mostrar pantalla de game over sin sonido
     show_game_over(screen)
