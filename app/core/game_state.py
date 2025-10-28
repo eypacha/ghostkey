@@ -1,7 +1,7 @@
 # game_state.py - Clase para manejar el estado del juego Ghostkey
 
 import random
-from commands import COMMANDS_LEVEL_1
+from .commands import COMMANDS_LEVEL_1
 
 class GameState:
     def __init__(self, screen):
