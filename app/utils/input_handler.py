@@ -1,4 +1,4 @@
-# input_handler.py - Función para manejar el input del usuario en Ghostkey
+# input_handler.py 
 
 import select
 import sys

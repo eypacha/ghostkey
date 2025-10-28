@@ -1,4 +1,4 @@
-# game_over.py - Pantalla de game over
+# game_over.py
 
 from asciimatics.effects import Cycle, Print
 from asciimatics.renderers import FigletText, Rainbow
@@ -8,11 +8,10 @@ from asciimatics.renderers import FigletText
 
 def show_game_over(screen, score=None):
     screen.clear()
-    # GAME OVER en grande
     text = "GAME OVER"
     figlet = FigletText(text, font="big")
     y = screen.height // 2 - 6
-    # Soportar str o tuple/list para rendered_text
+
     lines = []
     rendered = figlet.rendered_text
     if isinstance(rendered, str):

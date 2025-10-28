@@ -1,4 +1,4 @@
-# game.py - Lógica del juego principal
+# game.py 
 
 import time
 from game_over import show_game_over
@@ -15,15 +15,11 @@ def start_game(screen):
         delta_time = current_time - game_state.last_time
         game_state.last_time = current_time
 
-        # Actualizar posición basada en tiempo transcurrido
         game_state.y += game_state.fall_speed * delta_time
 
-        # Procesar input usando función modular
         handle_input(game_state)
 
-        # Dibujar la pantalla
         render_game(game_state)
         time.sleep(0.01)
 
-    # Mostrar pantalla de game over con puntaje final
     show_game_over(screen, score=game_state.score)
