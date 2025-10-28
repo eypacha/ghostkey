@@ -19,7 +19,8 @@ def handle_input(game_state):
                         # Si completó la palabra, sumar puntaje y resetear
                         if len(game_state.typed_letters) == len(game_state.word):
                             game_state.score += 1
-                            print('\a', end='', flush=True)  # Bell terminal
                             game_state.reset_word()
+                    else:
+                        print('\a', end='', flush=True)  # Bell terminal al equivocarse
         except:
             break
