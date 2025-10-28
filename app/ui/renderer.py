@@ -9,9 +9,9 @@ def render_game(game_state):
     score_text = f"Score: {game_state.score}"
     # Usar FigletText para un efecto ascii si hay espacio suficiente
     if screen.width > 40:
-        figlet = FigletText(str(game_state.score), font="mini")
+        # PUNTOS
+        figlet = FigletText(str(game_state.score), font="digital")
         rendered = figlet.rendered_text
-        # Si es string, usar splitlines; si es tuple/list, iterar y filtrar None
         lines = []
         if isinstance(rendered, str):
             lines = rendered.splitlines()
@@ -23,10 +23,31 @@ def render_game(game_state):
                     for subpart in part:
                         if isinstance(subpart, str):
                             lines.extend(subpart.splitlines())
-        # Filtrar líneas que sean None, vacías, solo espacios o exactamente 'None'
         lines = [line for line in lines if isinstance(line, str) and line.strip() and line.strip().upper() != 'NONE']
+        # Escribir "POINTS" encima del puntaje
+        points_label = "POINTS"
+        screen.print_at(points_label, screen.width - len(points_label) - 2, 1, colour=3, bg=0)
         for i, text in enumerate(lines):
-            screen.print_at(text, screen.width - len(text) - 2, 1 + i, colour=3, bg=0)
+            screen.print_at(text, screen.width - len(text) - 2, 2 + i, colour=3, bg=0)
+        # NIVEL
+        level_figlet = FigletText(str(game_state.level), font="digital")
+        level_lines = []
+        rendered_level = level_figlet.rendered_text
+        if isinstance(rendered_level, str):
+            level_lines = rendered_level.splitlines()
+        elif isinstance(rendered_level, (tuple, list)):
+            for part in rendered_level:
+                if isinstance(part, str):
+                    level_lines.extend(part.splitlines())
+                elif isinstance(part, (tuple, list)):
+                    for subpart in part:
+                        if isinstance(subpart, str):
+                            level_lines.extend(subpart.splitlines())
+        level_lines = [line for line in level_lines if isinstance(line, str) and line.strip() and line.strip().upper() != 'NONE']
+        nivel_label = "LEVEL"
+        screen.print_at(nivel_label, screen.width - len(nivel_label) - 2, 2 + len(lines), colour=3, bg=0)
+        for i, text in enumerate(level_lines):
+            screen.print_at(text, screen.width - len(text) - 2, 3 + len(lines) + i, colour=3, bg=0)
     else:
         screen.print_at(score_text, screen.width - len(score_text) - 2, 1, colour=3, bg=0)
     display_y = int(game_state.y)
