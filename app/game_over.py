@@ -48,11 +48,6 @@ def show_game_over(screen, score=None):
         for i, line in enumerate(score_lines):
             screen.print_at(line, screen.width // 2 - len(line) // 2, y_score + i, colour=3)
 
-    msg = "Presiona cualquier tecla para salir..."
-    screen.print_at(msg, screen.width // 2 - len(msg) // 2, screen.height - 2, colour=7)
+    import time
     screen.refresh()
-    # Esperar hasta que el usuario presione una tecla válida
-    while True:
-        key = screen.get_key()
-        if key is not None:
-            break
+    time.sleep(3)
