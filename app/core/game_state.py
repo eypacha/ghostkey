@@ -12,9 +12,10 @@ class GameState:
         self.y = 0.0
         self.input_y = screen.height - 3
         self.last_time = None
-        self.fall_speed = 2  # caracteres por segundo
+        self.fall_speed = 1  # 1
         self.score = 0
         self.level = 1
+        self.words_completed = 0  # contador de palabras completadas
         self.running = True
 
     def reset_word(self):

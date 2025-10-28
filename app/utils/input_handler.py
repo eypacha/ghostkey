@@ -19,6 +19,11 @@ def handle_input(game_state):
                         # Si completó la palabra, sumar puntaje y resetear
                         if len(game_state.typed_letters) == len(game_state.word):
                             game_state.score += 1
+                            game_state.words_completed += 1
+                            # Cada 3 palabras, subir de nivel y aumentar velocidad
+                            if game_state.words_completed % 3 == 0:
+                                game_state.level += 1
+                                game_state.fall_speed += 0.7  # Aumenta la velocidad
                             game_state.reset_word()
                     else:
                         print('\a', end='', flush=True)  # Bell terminal al equivocarse
