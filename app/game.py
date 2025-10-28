@@ -2,12 +2,9 @@
 
 import time
 from game_over import show_game_over
-from commands import COMMANDS_LEVEL_1
 from core.game_state import GameState
 from utils.input_handler import handle_input
-from core.commands import COMMANDS_LEVEL_1
 from ui.renderer import render_game
-from renderer import render_game
 
 def start_game(screen):
     game_state = GameState(screen)
