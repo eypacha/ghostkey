@@ -6,6 +6,7 @@ from asciimatics.scene import Scene
 
 from asciimatics.renderers import FigletText
 
+
 def show_game_over(screen, score=None):
     screen.clear()
     text = "GAME OVER"
@@ -45,8 +46,11 @@ def show_game_over(screen, score=None):
                         if isinstance(subpart, str):
                             score_lines.extend(subpart.splitlines())
         for i, line in enumerate(score_lines):
-            screen.print_at(line, screen.width // 2 - len(line) // 2, y_score + i, colour=3)
+            screen.print_at(
+                line, screen.width // 2 - len(line) // 2, y_score + i, colour=3
+            )
 
     import time
+
     screen.refresh()
     time.sleep(3)

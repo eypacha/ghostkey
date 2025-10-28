@@ -1,7 +1,8 @@
-# input_handler.py 
+# input_handler.py
 
 import select
 import sys
+
 
 def handle_input(game_state):
     """
@@ -26,6 +27,6 @@ def handle_input(game_state):
                                 game_state.fall_speed += 0.7  # Aumenta la velocidad
                             game_state.reset_word()
                     else:
-                        print('\a', end='', flush=True)  # Bell terminal al equivocarse
+                        print("\a", end="", flush=True)  # Bell terminal al equivocarse
         except:
             break

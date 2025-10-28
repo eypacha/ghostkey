@@ -1,10 +1,11 @@
-# game.py 
+# game.py
 
 import time
 from game_over import show_game_over
 from core.game_state import GameState
 from utils.input_handler import handle_input
 from ui.renderer import render_game
+
 
 def start_game(screen):
     game_state = GameState(screen)

@@ -3,6 +3,7 @@
 import numpy as np
 import simpleaudio as sa
 
+
 def play_tone(frequency=440, duration=0.2, volume=0.5, sample_rate=44100):
     """
     Reproduce un tono senoidal de la frecuencia y duración especificadas.

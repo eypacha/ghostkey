@@ -3,6 +3,7 @@
 import random
 from .commands import COMMANDS_LEVEL_1
 
+
 class GameState:
     def __init__(self, screen):
         self.screen = screen
@@ -12,7 +13,7 @@ class GameState:
         self.y = 0.0
         self.input_y = screen.height - 3
         self.last_time = None
-        self.fall_speed = 1 
+        self.fall_speed = 1
         self.score = 0
         self.level = 1
         self.words_completed = 0

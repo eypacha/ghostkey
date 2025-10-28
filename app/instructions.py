@@ -1,12 +1,13 @@
 # instructions.py - Pantalla de instrucciones
 
+
 def show_instructions(screen):
     screen.clear()
     instructions = [
         "GHOSTKEY",
         "",
         "Escribe comandos rápido para impedir que te hacken.",
-        "ENTER para jugar."
+        "ENTER para jugar.",
     ]
     y = screen.height // 2 - len(instructions) // 2
     for i, line in enumerate(instructions):

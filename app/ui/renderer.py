@@ -2,6 +2,7 @@ from asciimatics.renderers import FigletText
 
 # renderer.py - Función para dibujar la pantalla del juego Ghostkey
 
+
 def render_game(game_state):
     screen = game_state.screen
     screen.clear()
@@ -23,10 +24,16 @@ def render_game(game_state):
                     for subpart in part:
                         if isinstance(subpart, str):
                             lines.extend(subpart.splitlines())
-        lines = [line for line in lines if isinstance(line, str) and line.strip() and line.strip().upper() != 'NONE']
+        lines = [
+            line
+            for line in lines
+            if isinstance(line, str) and line.strip() and line.strip().upper() != "NONE"
+        ]
         # Escribir "POINTS" encima del puntaje
         points_label = "POINTS"
-        screen.print_at(points_label, screen.width - len(points_label) - 2, 1, colour=3, bg=0)
+        screen.print_at(
+            points_label, screen.width - len(points_label) - 2, 1, colour=3, bg=0
+        )
         for i, text in enumerate(lines):
             screen.print_at(text, screen.width - len(text) - 2, 2 + i, colour=3, bg=0)
         # NIVEL
@@ -43,13 +50,27 @@ def render_game(game_state):
                     for subpart in part:
                         if isinstance(subpart, str):
                             level_lines.extend(subpart.splitlines())
-        level_lines = [line for line in level_lines if isinstance(line, str) and line.strip() and line.strip().upper() != 'NONE']
+        level_lines = [
+            line
+            for line in level_lines
+            if isinstance(line, str) and line.strip() and line.strip().upper() != "NONE"
+        ]
         nivel_label = "LEVEL"
-        screen.print_at(nivel_label, screen.width - len(nivel_label) - 2, 2 + len(lines), colour=3, bg=0)
+        screen.print_at(
+            nivel_label,
+            screen.width - len(nivel_label) - 2,
+            2 + len(lines),
+            colour=3,
+            bg=0,
+        )
         for i, text in enumerate(level_lines):
-            screen.print_at(text, screen.width - len(text) - 2, 3 + len(lines) + i, colour=3, bg=0)
+            screen.print_at(
+                text, screen.width - len(text) - 2, 3 + len(lines) + i, colour=3, bg=0
+            )
     else:
-        screen.print_at(score_text, screen.width - len(score_text) - 2, 1, colour=3, bg=0)
+        screen.print_at(
+            score_text, screen.width - len(score_text) - 2, 1, colour=3, bg=0
+        )
     display_y = int(game_state.y)
     for i, letter in enumerate(game_state.word):
         if i < len(game_state.typed_letters):
