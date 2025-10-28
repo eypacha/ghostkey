@@ -1,6 +1,6 @@
 
 
-# main.py - Punto de entrada del juego Ghostkey
+# main.py
 
 from asciimatics.screen import Screen
 from intro import demo
@@ -10,9 +10,13 @@ from game_over import show_game_over
 
 def main():
     def wrapped(screen):
-        demo(screen)
-        show_instructions(screen)
-        start_game(screen)
+        while True:
+            try:
+                demo(screen)
+                show_instructions(screen)
+                start_game(screen)
+            except KeyboardInterrupt:
+                break
     Screen.wrapper(wrapped)
 
 if __name__ == "__main__":

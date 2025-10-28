@@ -16,9 +16,9 @@ def handle_input(game_state):
                 if expected_index < len(game_state.word):
                     if char == game_state.word[expected_index]:
                         game_state.typed_letters += char
-                        # Si completó la palabra, sumar puntaje y resetear
+                        game_state.score += 1  # Sumar 1 punto por cada letra correcta
+                        # Si completó la palabra, resetear
                         if len(game_state.typed_letters) == len(game_state.word):
-                            game_state.score += 1
                             game_state.words_completed += 1
                             # Cada 3 palabras, subir de nivel y aumentar velocidad
                             if game_state.words_completed % 3 == 0:

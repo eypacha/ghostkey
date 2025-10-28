@@ -25,5 +25,5 @@ def start_game(screen):
         render_game(game_state)
         time.sleep(0.01)
 
-    # Mostrar pantalla de game over sin sonido
-    show_game_over(screen)
+    # Mostrar pantalla de game over con puntaje final
+    show_game_over(screen, score=game_state.score)
