@@ -22,5 +22,40 @@ python main.py
 - `game.py`: Lógica del juego con palabras cayendo
 - `game_over.py`: Pantalla de fin de juego con efectos dramáticos
 
+
+## Compilar ejecutable para macOS
+
+1. Asegúrate de tener un entorno virtual y dependencias instaladas:
+	```sh
+	python3 -m venv .venv
+	source .venv/bin/activate
+	pip install -r requirements.txt
+	```
+2. Ejecuta el script de compilación:
+	```sh
+	./build-macos.sh
+	```
+3. El ejecutable se generará en:
+	```sh
+	dist/ghostkey-mac
+	```
+	Puedes ejecutarlo con:
+	```sh
+	./dist/ghostkey-mac
+	```
+
+## Compilar ejecutable para Windows (desde macOS)
+
+1. Instala Wine y PyInstaller para Windows si no los tienes.
+2. Ejecuta el script:
+	```sh
+	./build-windows.sh
+	```
+3. El ejecutable se generará en:
+	```sh
+	dist/windows/ghostkey-win.exe
+	```
+	Puedes transferirlo y ejecutarlo en una PC con Windows.
+
 ## Requisitos
 - Python 3.x
