@@ -18,9 +18,9 @@ class GameState:
         self.level = 1
         self.words_completed = 0
         self.running = True
-        self.combo = 0  # Contador de aciertos consecutivos
-        self.combo_message = ""  # Mensaje temporal para efectos
-        self.combo_timer = 0  # Temporizador para el mensaje (en frames)
+        self.combo = 0 
+        self.combo_message = "" 
+        self.combo_timer = 0 
 
     def reset_word(self):
         self.word = random.choice(COMMANDS_LEVEL_1)
