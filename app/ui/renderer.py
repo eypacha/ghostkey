@@ -80,4 +80,31 @@ def render_game(game_state):
         screen.print_at(letter, game_state.x + i, display_y, colour=colour, bg=0)
     screen.print_at("Escribe: ", 2, game_state.input_y, colour=7, bg=0)
     screen.print_at(game_state.typed_letters, 11, game_state.input_y, colour=2, bg=0)
+    
+    # Mostrar mensaje de combo si existe
+    if game_state.combo_timer > 0:
+        combo_figlet = FigletText(game_state.combo_message, font="small")
+        combo_rendered = combo_figlet.rendered_text
+        combo_lines = []
+        if isinstance(combo_rendered, str):
+            combo_lines = combo_rendered.splitlines()
+        elif isinstance(combo_rendered, (tuple, list)):
+            for part in combo_rendered:
+                if isinstance(part, str):
+                    combo_lines.extend(part.splitlines())
+                elif isinstance(part, (tuple, list)):
+                    for subpart in part:
+                        if isinstance(subpart, str):
+                            combo_lines.extend(subpart.splitlines())
+        combo_lines = [
+            line for line in combo_lines
+            if isinstance(line, str) and line.strip() and line.strip().upper() != "NONE"
+        ]
+        if combo_lines:  # Solo si hay líneas para mostrar
+            combo_x = screen.width // 2 - max(len(line) for line in combo_lines) // 2
+            combo_y = screen.height // 2 - len(combo_lines) // 2
+            for i, line in enumerate(combo_lines):
+                screen.print_at(line, combo_x, combo_y + i, colour=1, bg=0)  # Rojo brillante
+        game_state.combo_timer -= 1  # Decrementar timer
+    
     screen.refresh()
