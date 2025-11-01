@@ -16,11 +16,6 @@ def demo(screen):
     scene = Scene(effects, -1, name="intro")  # -1 para duración infinita
     # Mostrar la animación hasta que el usuario presione Enter
     screen.play([scene], stop_on_resize=True, repeat=False)
-    # Limpiar el buffer de entrada
+    # Limpiar el buffer de entrada (opcional, pero no esperar otro Enter)
     while screen.get_key() is not None:
         pass
-    # Esperar Enter para continuar
-    while True:
-        key = screen.get_key()
-        if key in (10, 13):
-            break
